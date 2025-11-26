@@ -1,0 +1,282 @@
+/* Patient Detail Panel Styles */
+.patient-detail-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 1000;
+  display: flex;
+  justify-content: flex-end;
+  align-items: stretch;
+}
+
+.patient-detail-panel {
+  width: 60%;
+  min-width: 600px;
+  max-width: 800px;
+  height: 100vh;
+  background: #1a1a1a;
+  border-left: 1px solid #333;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: slideInRight 0.3s ease-out;
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+/* Header */
+.patient-detail-header {
+  background: #222;
+  border-bottom: 1px solid #333;
+  padding: 1.5rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+
+.patient-detail-title h2 {
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0 0 0.25rem 0;
+}
+
+.patient-detail-subtitle {
+  color: #888;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.patient-detail-close {
+  background: none;
+  border: none;
+  color: #888;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.patient-detail-close:hover {
+  background: #333;
+  color: #fff;
+}
+
+/* Content */
+.patient-detail-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 2rem;
+}
+
+/* Sections */
+.detail-section {
+  margin-bottom: 2.5rem;
+}
+
+.detail-section:last-child {
+  margin-bottom: 0;
+}
+
+.detail-section-title {
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0 0 1rem 0;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #333;
+  position: relative;
+}
+
+.detail-section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 40px;
+  height: 2px;
+  background: #007acc;
+}
+
+/* Detail Grid */
+.detail-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.detail-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.detail-item.full-width {
+  grid-column: 1 / -1;
+}
+
+.detail-label {
+  color: #888;
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.detail-value {
+  color: #fff;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+/* Badges */
+.detail-badge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-align: center;
+  min-width: 80px;
+}
+
+.detail-badge.stage {
+  background: #27ae60;
+  color: #fff;
+}
+
+.detail-badge.grade {
+  background: #e74c3c;
+  color: #fff;
+}
+
+.detail-badge.score {
+  background: #3498db;
+  color: #fff;
+}
+
+.detail-badge.outcome {
+  background: #f39c12;
+  color: #fff;
+}
+
+/* Drugs List */
+.drugs-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.drug-item {
+  background: #222;
+  border: 1px solid #333;
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+.drug-name {
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+}
+
+.drug-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.drug-details span {
+  color: #bbb;
+  font-size: 0.85rem;
+}
+
+/* Effects List */
+.effects-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.effect-badge {
+  background: #2c3e50;
+  color: #ecf0f1;
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  border: 1px solid #34495e;
+}
+
+/* Scrollbar Styling */
+.patient-detail-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.patient-detail-content::-webkit-scrollbar-track {
+  background: #222;
+}
+
+.patient-detail-content::-webkit-scrollbar-thumb {
+  background: #444;
+  border-radius: 3px;
+}
+
+.patient-detail-content::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .patient-detail-panel {
+    width: 100%;
+    min-width: unset;
+  }
+  
+  .detail-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .patient-detail-header {
+    padding: 1rem;
+  }
+  
+  .patient-detail-content {
+    padding: 1rem;
+  }
+}
+
+/* Animation for smooth transitions */
+.detail-section {
+  animation: fadeInUp 0.4s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Staggered animation for sections */
+.detail-section:nth-child(1) { animation-delay: 0.1s; }
+.detail-section:nth-child(2) { animation-delay: 0.2s; }
+.detail-section:nth-child(3) { animation-delay: 0.3s; }
+.detail-section:nth-child(4) { animation-delay: 0.4s; }
+.detail-section:nth-child(5) { animation-delay: 0.5s; }

@@ -1,0 +1,22 @@
+/* Landing page styles (OpenAI-like, dark theme) */
+.landing { min-height: 100vh; background: #0f0f10; color: #eaeaea; display:flex; flex-direction:column; }
+.landing-header { display:flex; justify-content:space-between; align-items:center; padding:16px 24px; border-bottom:1px solid #1f1f22; }
+.landing-brand { font-size:22px; font-weight:700; letter-spacing:0.4px; }
+.landing-login { background:#1d1f22; color:#cfcfcf; border:1px solid #2a2d31; border-radius:24px; padding:8px 14px; cursor:pointer; }
+.landing-main { max-width:920px; margin:0 auto; padding:48px 24px 72px; }
+.landing-meta { color:#9aa0a6; font-size:14px; margin-bottom:16px; }
+.landing-title { font-size:64px; font-weight:800; letter-spacing:-1px; margin:0 0 20px; color:#ffffff; }
+.landing-cta-row { display:flex; gap:12px; margin:20px 0 28px; }
+.landing-cta { background:#007acc; color:#fff; border:none; padding:12px 18px; border-radius:28px; font-weight:600; cursor:pointer; opacity:0.7; }
+.landing-cta.secondary { background:#1d1f22; color:#d7e3fb; border:1px solid #2a2d31; }
+.landing-subtools { display:flex; align-items:center; gap:18px; color:#aab0b6; font-size:14px; padding-top:8px; border-top:1px solid #1f1f22; }
+.landing-listen { display:flex; align-items:center; gap:10px; background:transparent; border:none; color:inherit; cursor:pointer; padding:8px 0; }
+.landing-listen .dot { width:10px; height:10px; display:inline-block; border-radius:50%; background:#e5e7eb; }
+.landing-duration { color:#aab0b6; }
+.landing-share { margin-left:auto; }
+.landing-body { margin-top:36px; color:#cfd3d7; line-height:1.7; font-size:18px; }
+
+@media (max-width:768px){
+  .landing-title{ font-size:40px; }
+  .landing-main{ padding-top:32px; }
+}
