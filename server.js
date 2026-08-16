@@ -25,6 +25,9 @@ app.use(cors({
     // Allow server-to-server requests and browsers from allowed origins
     if (!origin || allowedOrigins.includes(origin)) {
       callback(null, true);
+    } else if (/^https:\/\/[\w-]+\.vercel\.app$/.test(origin)) {
+      // Allow all Vercel deployment URLs (production + previews)
+      callback(null, true);
     } else {
       callback(new Error(`CORS blocked for origin: ${origin}`));
     }
