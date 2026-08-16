@@ -16,8 +16,9 @@ router.get('/', async (req, res) => {
         : `Patient ${patient._id}`,
       age: patient.patient_profile.personal_basic.age,
       cancer: patient.patient_profile.clinical_data.cancer_type,
-      tag: patient.patient_profile.clinical_data.grade,
+      tag: patient.patient_profile.clinical_data.cancer_type.split(' ')[0],
       stage: patient.patient_profile.clinical_data.stage,
+      grade: patient.patient_profile.clinical_data.grade,
       score: Math.round(patient.patient_profile.genomic_data.genomic_data_quality_score)
     }));
 
