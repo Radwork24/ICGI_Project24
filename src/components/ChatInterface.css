@@ -38,11 +38,12 @@
 /* Individual Messages */
 .message {
   display: flex;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
+  width: 100%;
 }
 
 .message.user {
-  justify-content: flex-end;
+  justify-content: flex-start;
 }
 
 .message.ai {
@@ -50,45 +51,64 @@
 }
 
 .message-content {
-  max-width: 80%;
-  background: #222;
-  border: 1px solid #333;
-  border-radius: 12px;
-  padding: 1rem;
+  max-width: 100%;
+  width: 100%;
+  background: transparent;
+  border: none;
+  padding: 0;
   position: relative;
 }
 
 .message.user .message-content {
-  background: #007acc;
-  border-color: #007acc;
+  background: transparent;
+  border: none;
 }
 
 .message-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 0.5rem;
-  font-size: 0.8rem;
+  display: none;
 }
 
 .message-sender {
   font-weight: 600;
   color: #fff;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.5rem;
+  display: block;
+  opacity: 0.6;
 }
 
 .message.ai .message-sender {
-  color: #007acc;
+  color: #00d9ff;
+}
+
+.message.user .message-sender {
+  color: #fff;
 }
 
 .message-time {
-  color: #888;
+  color: #666;
   font-size: 0.7rem;
+  margin-left: 0.5rem;
 }
 
 .message-text {
-  color: #fff;
-  line-height: 1.5;
+  color: #e0e0e0;
+  line-height: 1.8;
   word-wrap: break-word;
+  font-size: 0.95rem;
+}
+
+.message.user .message-text {
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.message.ai .message-text {
+  color: #d0d0d0;
+  white-space: pre-wrap;
 }
 
 /* Mentioned Patients */
@@ -137,23 +157,27 @@
 
 /* Message Context */
 .message-context {
-  margin-top: 1rem;
-  padding: 0.75rem;
-  background: rgba(0, 122, 204, 0.1);
-  border: 1px solid rgba(0, 122, 204, 0.3);
-  border-radius: 8px;
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background: rgba(0, 217, 255, 0.05);
+  border-left: 2px solid rgba(0, 217, 255, 0.3);
+  border-radius: 4px;
   font-size: 0.85rem;
 }
 
 .context-label {
-  color: #007acc;
+  color: #00d9ff;
   font-weight: 600;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.75rem;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .context-patient {
-  color: #ccc;
-  margin-bottom: 0.25rem;
+  color: #b0b0b0;
+  margin-bottom: 0.5rem;
+  padding-left: 0.5rem;
 }
 
 .context-patient:last-child {
@@ -275,6 +299,7 @@
     opacity: 0;
     transform: translateY(20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -289,6 +314,7 @@
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
@@ -299,20 +325,20 @@
   .message-content {
     max-width: 95%;
   }
-  
+
   .chat-messages {
     padding: 1rem;
   }
-  
+
   .chat-input-container {
     padding: 0.75rem;
   }
-  
+
   .chat-input-wrapper {
     flex-direction: column;
     gap: 0.5rem;
   }
-  
+
   .chat-send-button {
     align-self: flex-end;
     padding: 0.5rem 1rem;

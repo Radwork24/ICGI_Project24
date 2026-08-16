@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
+import { API_URL } from '../config/api.js';
 import './ChatInterface.css';
 
 const ChatInterface = ({ patients, onSendMessage }) => {
@@ -21,21 +22,21 @@ const ChatInterface = ({ patients, onSendMessage }) => {
   const handleInputChange = (e) => {
     const value = e.target.value;
     const cursorPosition = e.target.selectionStart;
-    
+
     setMessage(value);
-    
+
     // Find @ mentions
     const mentionMatch = value.substring(0, cursorPosition).match(/@(\w*)$/);
-    
+
     if (mentionMatch) {
       const query = mentionMatch[1].toLowerCase();
       setMentionStart(cursorPosition - mentionMatch[0].length);
-      
+
       // Filter patients based on query
-      const filteredPatients = patients.filter(patient => 
+      const filteredPatients = patients.filter(patient =>
         patient.name.toLowerCase().includes(query)
       );
-      
+
       setSuggestions(filteredPatients);
       setShowSuggestions(filteredPatients.length > 0);
     } else {
@@ -48,12 +49,12 @@ const ChatInterface = ({ patients, onSendMessage }) => {
   const handleSuggestionClick = (patient) => {
     const beforeMention = message.substring(0, mentionStart);
     const afterCursor = message.substring(textareaRef.current.selectionStart);
-    
+
     const newMessage = beforeMention + `@${patient.name}` + afterCursor;
     setMessage(newMessage);
     setShowSuggestions(false);
     setSuggestions([]);
-    
+
     // Focus back to textarea
     setTimeout(() => {
       textareaRef.current.focus();
@@ -83,12 +84,12 @@ const ChatInterface = ({ patients, onSendMessage }) => {
     const patientNames = mentionedPatients ? mentionedPatients.map(m => m.substring(1)) : [];
 
     // Find full patient data for mentioned patients
-    const mentionedPatientData = patients.filter(patient => 
+    const mentionedPatientData = patients.filter(patient =>
       patientNames.includes(patient.name)
     );
 
     try {
-      const response = await fetch('http://localhost:5000/api/chat', {
+      const response = await fetch(`${API_URL}/api/chat`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -112,7 +113,7 @@ const ChatInterface = ({ patients, onSendMessage }) => {
       setMessages(prev => [...prev, aiMessage]);
     } catch (error) {
       console.error('Error sending message:', error);
-      
+
       const errorMessage = {
         id: Date.now() + 1,
         type: 'ai',
@@ -151,14 +152,6 @@ const ChatInterface = ({ patients, onSendMessage }) => {
         {messages.map((msg) => (
           <div key={msg.id} className={`message ${msg.type}`}>
             <div className="message-content">
-              <div className="message-header">
-                <span className="message-sender">
-                  {msg.type === 'ai' ? '🤖 ICGI AI' : '👤 You'}
-                </span>
-                <span className="message-time">
-                  {msg.timestamp.toLocaleTimeString()}
-                </span>
-              </div>
               <div className="message-text">
                 {msg.content.split(/(@\w+(?:\s+\w+)*)/).map((part, index) => {
                   if (part.startsWith('@')) {
@@ -211,7 +204,7 @@ const ChatInterface = ({ patients, onSendMessage }) => {
             ))}
           </div>
         )}
-        
+
         <div className="chat-input-wrapper">
           <textarea
             ref={textareaRef}

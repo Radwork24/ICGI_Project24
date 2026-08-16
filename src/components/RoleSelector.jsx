@@ -17,7 +17,7 @@ const RoleSelector = ({ onRoleSelect }) => {
           {/* Welcome Section */}
           <div className="role-welcome">
             <div className="role-date">December 2024 • Platform</div>
-            <h1 className="role-title">Welcome to ICGI</h1>
+            <h1 className="role-title">Welcome to ICGI V1.1</h1>
             <p className="role-description">
               Select your role to access personalized cancer genomics intelligence and AI-powered patient analysis tools.
             </p>
@@ -34,7 +34,7 @@ const RoleSelector = ({ onRoleSelect }) => {
               <div className="role-card-button">
                 <span>Access Doctor Portal</span>
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                  <path d="M6 12L10 8L6 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M6 12L10 8L6 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </div>
             </div>
@@ -48,7 +48,7 @@ const RoleSelector = ({ onRoleSelect }) => {
               <div className="role-card-button">
                 <span>Access Patient Portal</span>
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                  <path d="M6 12L10 8L6 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M6 12L10 8L6 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </div>
             </div>
